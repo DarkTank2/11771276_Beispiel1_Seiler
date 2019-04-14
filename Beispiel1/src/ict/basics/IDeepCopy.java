@@ -1,11 +1,11 @@
 /**
- * Filename: Restaurant.java
+ * Filename: IDeepCopy.java
  * Description: 
  * @author Alexander Seiler, 11771276
  * @since 14.04.2019
  */
-package rbvs;
+package ict.basics;
 
-public class Restaurant {
+public interface IDeepCopy {
 
 }
