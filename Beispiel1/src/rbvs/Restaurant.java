@@ -6,6 +6,8 @@
  */
 package rbvs;
 
+import utils.Logger;
+
 public class Restaurant {
 
 }
