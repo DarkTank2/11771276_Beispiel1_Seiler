@@ -7,5 +7,11 @@
 package rbvs.record;
 
 public interface IRecord {
+	
+	/**
+	 * The only method in this Interface
+	 * @author Alexander Seiler, 11771276
+	 * @return
+	 */
 	long getIdentifier();
 }

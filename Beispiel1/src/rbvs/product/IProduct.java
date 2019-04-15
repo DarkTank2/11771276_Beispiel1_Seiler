@@ -10,4 +10,17 @@ import ict.basics.IDeepCopy;
 
 public interface IProduct extends IDeepCopy {
 
+	/**
+	 * Returns the name of the product.
+	 * @author Alexander Seiler, 11771276
+	 * @return
+	 */
+	String getName();
+	
+	/**
+	 * Returns the price of the product.
+	 * @author Alexander Seiler, 11771276
+	 * @return
+	 */
+	float getPrice();
 }
