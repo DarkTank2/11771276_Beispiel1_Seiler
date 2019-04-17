@@ -19,13 +19,17 @@ public class main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Logger logger = new Logger("main");
-		logger.setLoglevel(Loglevel.TRACE);
+		logger.setLoglevel(Loglevel.INFO);
 		logger.info("[function] main()");
 		Table t = new Table("Table1", 5);
 		Table tt = new Table("TableAtWindow", 3);
 		t.equals(tt);
 		tt.setSeatCount(4);
 		logger.info("[table-info] " +t.toString());
+		logger.trace("[test] test1");
+		logger.trace("[test] test2");
+		logger.trace("[test] test3");
+		logger.finalize();
 	}
 
 }
