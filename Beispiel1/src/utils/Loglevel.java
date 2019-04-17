@@ -1,6 +1,6 @@
 /**
  * Filename: Loglevel.java
- * Description: 
+ * Description: Enums of the log-levels
  * @author Alexander Seiler, 11771276
  * @since 15.04.2019
  */
