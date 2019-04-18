@@ -6,10 +6,13 @@
  */
 package rbvs.product;
 
+import utils.Logger;
+
 public abstract class Product implements IProduct {
 
 	private String name;
 	private float price;
+	protected Logger logger;
 	
 	/**
 	 * Constructor for class Product.java
@@ -18,6 +21,7 @@ public abstract class Product implements IProduct {
 	 */
 	public Product(String name) {
 		super();
+		this.logger = new Logger("SimpleProduct_" + name);
 		initialize(name, 0);
 	}
 	/**
@@ -28,6 +32,7 @@ public abstract class Product implements IProduct {
 	 */
 	public Product(String name, float price) {
 		super();
+		this.logger = new Logger("SimpleProduct_" + name);
 		initialize(name, price);
 	}
 

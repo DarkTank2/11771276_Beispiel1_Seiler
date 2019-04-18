@@ -6,13 +6,9 @@
  */
 package rbvs.product;
 
-import utils.Logger;
-
 public class ExtendedProduct extends SimpleProduct {
 
 	private ExtendedProduct savedState;
-	private Logger logger;
-	
 	/**
 	 * Constructor for class ExtendedProduct.java
 	 * @author Alexander Seiler, 11771276
@@ -21,7 +17,7 @@ public class ExtendedProduct extends SimpleProduct {
 	 */
 	public ExtendedProduct(ExtendedProduct product) {
 		super(product.getName(), product.getPrice());
-		this.savedState = null;
+		this.savedState = product.savedState;
 	}
 
 	/**
@@ -33,19 +29,18 @@ public class ExtendedProduct extends SimpleProduct {
 	public ExtendedProduct(String name, float price) {
 		super(name, price);
 		this.savedState = null;
-		this.logger = new Logger("ExtendedProduct_" + name);
 		// TODO Auto-generated constructor stub
 	}
 
 	public void setName(String name) {
-		logger.info("[function] setName()");
-		this.savedState = new ExtendedProduct(this.getName(), 0);
+		this.logger.info("[function] setName()");
+		this.savedState = new ExtendedProduct(this);
 		super.setName(name);
 	}
 	
 	public void setPrice(float price) throws IllegalArgumentException {
-		logger.info("[function] setPrice()");
-		this.savedState = new ExtendedProduct(null, this.getPrice());
+		this.logger.info("[function] setPrice()");
+		this.savedState = new ExtendedProduct(this);
 		try {
 			super.setPrice(price);
 		} catch (IllegalArgumentException e) {
@@ -54,16 +49,29 @@ public class ExtendedProduct extends SimpleProduct {
 	}
 	
 	public boolean undo() {
-		logger.info("[function] undo()");
+		this.logger.info("[function] undo()");
+//		if the saved state is null return false since there is no undo possible
 		if (this.savedState == null) {
 			return false;
 		}
-		if(this.savedState.getName() == "") {
-			super.setPrice(this.savedState.getPrice());
-		} else {
-			super.setName(this.savedState.getName());
-		}
-		this.savedState = null;
+//		set the name and the price accordingly to the saved state
+		super.setName(this.savedState.getName());
+		super.setPrice(this.savedState.getPrice());
+//		recursively undo the changes of the saved states
+		boolean flag = this.savedState.undo();
+//		if the saved state can not undo it means that the end of the chain is reached and set this saved state to null to indicate the end
+		if (flag == false) this.savedState = null;
 		return true;
+	}
+	
+	public ExtendedProduct deepCopy() {
+		this.logger.info("[function] deepCopy() of ExtendedProduct");
+		return new ExtendedProduct(this);
+	}
+	
+	@Override
+	public String toString() {
+		this.logger.info("[function] toString() of ExtendedProduct");
+		return "ExtendedProduct [name=" + this.getName() + ",price=" + this.getPrice() + ",undoAvailable="  + (this.savedState == null ? "false" : "true") + "]";
 	}
 }

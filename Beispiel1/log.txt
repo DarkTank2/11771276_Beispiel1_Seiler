@@ -1,0 +1,29 @@
+2019-04-18T17:51:23.945 | INFO | main | [function] main()
+2019-04-18T17:51:23.950 | INFO | Table_Table1 | [function] equals()
+2019-04-18T17:51:23.950 | TRACE | Table_Table1 | [equals] Object does not match
+2019-04-18T17:51:23.950 | INFO | Table_TableAtWindow | [function] setSeatCount()
+2019-04-18T17:51:23.950 | INFO | Table_Table1 | [function] toString()
+2019-04-18T17:51:23.950 | INFO | main | [table-info] Table [id=Table1,seats=5]
+2019-04-18T17:51:23.951 | INFO | SimpleProduct_First | [function] toString() of ExtendedProduct
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] setName()
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] toString() of ExtendedProduct
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] setName()
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] toString() of ExtendedProduct
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] setPrice()
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] toString() of ExtendedProduct
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] undo()
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_third | [function] undo()
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_second | [function] undo()
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] undo()
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] toString() of ExtendedProduct
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] undo()
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_third | [function] undo()
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_second | [function] undo()
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] toString() of ExtendedProduct
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] undo()
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_third | [function] undo()
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] toString() of ExtendedProduct
+2019-04-18T17:51:23.953 | INFO | SimpleProduct_First | [function] undo()
+2019-04-18T17:51:23.953 | TRACE | main | [test] test1
+2019-04-18T17:51:23.953 | TRACE | main | [test] test2
+2019-04-18T17:51:23.953 | TRACE | main | [test] test3

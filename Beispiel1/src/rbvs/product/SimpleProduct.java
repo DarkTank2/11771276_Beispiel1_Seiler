@@ -6,12 +6,8 @@
  */
 package rbvs.product;
 
-import utils.Logger;
-
 public class SimpleProduct extends Product {
 
-	private Logger logger;
-	
 	/**
 	 * Constructor for class SimpleProduct.java
 	 * @author Alexander Seiler, 11771276
@@ -19,7 +15,6 @@ public class SimpleProduct extends Product {
 	 */
 	public SimpleProduct(String name) {
 		super(name);
-		this.logger = new Logger("SimpleProduct_" + name);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -31,7 +26,6 @@ public class SimpleProduct extends Product {
 	 */
 	public SimpleProduct(String name, float price) {
 		super(name, price);
-		this.logger = new Logger("SimpleProduct_" + name);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -40,7 +34,7 @@ public class SimpleProduct extends Product {
 	 */
 	@Override
 	public SimpleProduct deepCopy() {
-		logger.info("[function] deepCopy()");
+		this.logger.info("[function] deepCopy() of SimpleProduct");
 		// TODO Auto-generated method stub
 		return new SimpleProduct(this.getName(), this.getPrice());
 	}
