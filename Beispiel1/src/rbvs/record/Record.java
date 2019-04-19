@@ -8,7 +8,7 @@ package rbvs.record;
 
 import utils.Logger;
 
-public class Record implements IRecord {
+public abstract class Record implements IRecord {
 
 	private long id;
 	protected Logger logger;

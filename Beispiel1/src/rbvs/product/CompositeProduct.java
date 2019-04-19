@@ -82,12 +82,12 @@ public class CompositeProduct extends Product {
 	 * @return the list of products
 	 */
 	public Collection<Product> getProducts() {
-		this.logger.info("[function] getProducts() of " + this.getName());
+		this.logger.trace("[get] getProducts() of " + this.getName());
 		return this.containedProducts;
 	}
 	
 	public float getPrice() {
-		this.logger.info("[function] getPrice() of " + this.getName());
+		this.logger.trace("[get] getPrice() of " + this.getName());
 		double sum = this.containedProducts
 				.stream()
 				.mapToDouble(el -> el.getPrice())
