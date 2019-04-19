@@ -34,7 +34,7 @@ public class SimpleProduct extends Product {
 	 */
 	@Override
 	public SimpleProduct deepCopy() {
-		this.logger.info("[function] deepCopy() of SimpleProduct");
+		this.logger.info("[function] deepCopy() of " + this.getName());
 		// TODO Auto-generated method stub
 		return new SimpleProduct(this.getName(), this.getPrice());
 	}

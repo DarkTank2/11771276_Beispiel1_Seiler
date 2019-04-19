@@ -21,7 +21,7 @@ public abstract class Product implements IProduct {
 	 */
 	public Product(String name) {
 		super();
-		this.logger = new Logger("SimpleProduct_" + name);
+		this.logger = new Logger("Product_" + name);
 		initialize(name, 0);
 	}
 	/**
@@ -32,7 +32,7 @@ public abstract class Product implements IProduct {
 	 */
 	public Product(String name, float price) {
 		super();
-		this.logger = new Logger("SimpleProduct_" + name);
+		this.logger = new Logger("Product_" + name);
 		initialize(name, price);
 	}
 
@@ -48,6 +48,7 @@ public abstract class Product implements IProduct {
 	 */
 	@Override
 	public String getName() {
+		this.logger.trace("[get] name of " + this.name);
 		// TODO Auto-generated method stub
 		return this.name;
 	}
@@ -58,6 +59,7 @@ public abstract class Product implements IProduct {
 	 * @param name
 	 */
 	public void setName(String name) {
+		this.logger.trace("[set] name from '" + this.name + "' to '" + name + "'");
 		this.name = name == null ? "" : name;
 	}
 
@@ -66,6 +68,7 @@ public abstract class Product implements IProduct {
 	 */
 	@Override
 	public float getPrice() {
+		this.logger.trace("[get] name of " + this.price);
 		// TODO Auto-generated method stub
 		return this.price;
 	}
@@ -74,6 +77,7 @@ public abstract class Product implements IProduct {
 		if (price < 0) {
 			throw new IllegalArgumentException("[Product.setPrice()] Illegal Argument: Argument is smaller than 0.");
 		}
+		this.logger.trace("[set] price from '" + this.price + "' to '" + price + "'");
 		this.price = price;
 	}
 	

@@ -33,13 +33,13 @@ public class ExtendedProduct extends SimpleProduct {
 	}
 
 	public void setName(String name) {
-		this.logger.info("[function] setName()");
+		this.logger.trace("[set save] setName() of " + this.getName());
 		this.savedState = new ExtendedProduct(this);
 		super.setName(name);
 	}
 	
 	public void setPrice(float price) throws IllegalArgumentException {
-		this.logger.info("[function] setPrice()");
+		this.logger.trace("[set save] setPrice() of " + this.getName());
 		this.savedState = new ExtendedProduct(this);
 		try {
 			super.setPrice(price);
@@ -49,7 +49,7 @@ public class ExtendedProduct extends SimpleProduct {
 	}
 	
 	public boolean undo() {
-		this.logger.info("[function] undo()");
+		this.logger.info("[function] undo() of " + this.getName());
 //		if the saved state is null return false since there is no undo possible
 		if (this.savedState == null) {
 			return false;
@@ -65,13 +65,13 @@ public class ExtendedProduct extends SimpleProduct {
 	}
 	
 	public ExtendedProduct deepCopy() {
-		this.logger.info("[function] deepCopy() of ExtendedProduct");
+		this.logger.info("[function] deepCopy() of " + this.getName());
 		return new ExtendedProduct(this);
 	}
 	
 	@Override
 	public String toString() {
-		this.logger.info("[function] toString() of ExtendedProduct");
+		this.logger.info("[function] toString() of " + this.getName());
 		return "ExtendedProduct [name=" + this.getName() + ",price=" + this.getPrice() + ",undoAvailable="  + (this.savedState == null ? "false" : "true") + "]";
 	}
 }
