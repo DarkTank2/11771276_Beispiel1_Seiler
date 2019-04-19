@@ -46,7 +46,7 @@ public class Table {
 	 * @return seats
 	 */
 	public int getSeatCount() {
-		logger.info("[function] getSeatCount()");
+		logger.trace("[get] seatCount of " + this.id);
 		return this.seats;
 	}
 	
@@ -56,7 +56,7 @@ public class Table {
 	 * @param seatCount
 	 */
 	public void setSeatCount(int seatCount) {
-		logger.info("[function] setSeatCount()");
+		logger.trace("[set] SeatCount of " + this.id);
 		this.seats = seatCount;
 	}
 	
@@ -66,7 +66,7 @@ public class Table {
 	 * @return id
 	 */
 	public String getTableIdentifier() {
-		logger.info("[function] getTableIdentifier()");
+		logger.trace("[get] TableIdentifier of " + this.id);
 		return this.id;
 	}
 	
