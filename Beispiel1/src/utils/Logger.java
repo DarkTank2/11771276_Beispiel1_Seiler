@@ -33,8 +33,9 @@ public class Logger {
 	 * @author Alexander Seiler, 11771276
 	 * @param newLevel
 	 */
-	public void setLoglevel(Loglevel newLevel) {
+	public static void setLoglevel(Loglevel newLevel) {
 		System.out.println("Loglevel changed!");
+		list.add(new LogMessage("Changed Log-Level to " + newLevel.toString(), Loglevel.INFO, "LOGGER"));
 		Logger.level = newLevel;
 	}
 	
