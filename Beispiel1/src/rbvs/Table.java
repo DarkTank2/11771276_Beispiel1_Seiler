@@ -23,7 +23,7 @@ public class Table {
 	public Table(String id) {
 		super();
 		this.id = id;
-		this.seats = 0;
+		this.seats = 2;
 		logger = new Logger("Table_" + id);
 	}
 
