@@ -11,8 +11,7 @@ import rbvs.product.IProduct;
 public class DuplicateProductException extends Exception {
 
 	private IProduct product;
-	@SuppressWarnings("unused")
-	private static long	serialVersionUID = 101101;
+	private static final long	serialVersionUID = 101101;
 	
 	/**
 	 * Constructor for class DuplicateProductException.java

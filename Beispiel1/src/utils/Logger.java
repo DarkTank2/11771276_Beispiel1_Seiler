@@ -57,11 +57,13 @@ public class Logger {
 	 * @param message
 	 */
 	public void trace(String message) {
+//		create new LogMessage with the passed message, the corresponding Log-level and the name of the logger
 		LogMessage m = new LogMessage(message, Loglevel.TRACE, this.name);
 		list.add(m);
 		if(Logger.level.ordinal() > Loglevel.TRACE.ordinal()) {
 			return;
 		}
+//		only printing it to the console, if the set level is below or equal, e.g. if the Log-level is higher do not output it
 		this.print(m);
 	}
 	public void debug(String message) {
@@ -106,7 +108,10 @@ public class Logger {
 		try {
 	    	FileWriter fileWriter = new FileWriter("log.txt");
 		    PrintWriter printWriter = new PrintWriter(fileWriter);
-	    	Logger.list.stream().forEach(element -> printWriter.println(element.toString()));
+//		    writes each log-message to the file, regardless of the log-level, this is done for deeper debugging without using the debugger 
+	    	Logger.list
+	    		.stream()
+	    		.forEach(element -> printWriter.println(element.toString()));
 	    	printWriter.close();
 	    } catch(IOException e) {
 	    	System.out.println("Error during log-fil-writing!");

@@ -92,7 +92,8 @@ public class Table {
 			return false;
 		}
 		Table t = (Table) obj;
-		if (t.id == this.id && t.seats == this.seats) {
+//		using String.equals(String) since non static user input with same content but different reference
+		if (t.getTableIdentifier().equals(this.id) && t.seats == this.seats) {
 			logger.trace("[equals] Object matches");
 			return true;
 		} else {

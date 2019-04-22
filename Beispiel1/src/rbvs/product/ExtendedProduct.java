@@ -16,6 +16,7 @@ public class ExtendedProduct extends SimpleProduct {
 	 * @param savedState
 	 */
 	public ExtendedProduct(ExtendedProduct product) {
+//		creating a mere copy of the passed ExProduct
 		super(product.getName(), product.getPrice());
 		this.savedState = product.savedState;
 	}
@@ -34,16 +35,20 @@ public class ExtendedProduct extends SimpleProduct {
 
 	public void setName(String name) {
 		this.logger.trace("[set save] setName() of " + this.getName());
+//		saving the current status, also possible with IProduct.deepCopy()
 		this.savedState = new ExtendedProduct(this);
+//		super's setName provides check for null-string
 		super.setName(name);
 	}
 	
 	public void setPrice(float price) throws IllegalArgumentException {
 		this.logger.trace("[set save] setPrice() of " + this.getName());
+//		again save current state
 		this.savedState = new ExtendedProduct(this);
 		try {
 			super.setPrice(price);
 		} catch (IllegalArgumentException e) {
+//			in case of exception pass it upwards
 			throw e;
 		}
 	}

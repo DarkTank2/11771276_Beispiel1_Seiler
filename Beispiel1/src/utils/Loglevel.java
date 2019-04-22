@@ -6,6 +6,8 @@
  */
 package utils;
 
+// in case of new log-levels, please add them on the right spot
+
 public enum Loglevel {
 	TRACE,
 	DEBUG,

@@ -23,6 +23,10 @@ public class CompositeProduct extends Product {
 	 */
 	public CompositeProduct(String name, float discountPercentage) {
 		super(name);
+//		discount must be between 0 and 100, else set it to the closest of those values
+//		if smaller than 0 => set to 0
+//		else if higher than 100 => set to 100
+//		else set to value
 		this.discount = discountPercentage < 0 ? 0 : (discountPercentage > 100 ? 100 : discountPercentage);
 		this.containedProducts = new Vector<Product>();
 		// TODO Auto-generated constructor stub
@@ -37,8 +41,10 @@ public class CompositeProduct extends Product {
 	 */
 	public CompositeProduct(String name, float discountPercentage, Collection<Product> products) {
 		super(name);
+//		same thoughts as above at line 26
 		this.discount = discountPercentage < 0 ? 0 : (discountPercentage > 100 ? 100 : discountPercentage);
 		this.containedProducts = new Vector<Product>();
+//		adding each item from the passed list to this' list via streams
 		products
 			.stream()
 			.forEach(prod -> this.containedProducts.add(prod));
@@ -52,6 +58,7 @@ public class CompositeProduct extends Product {
 	public CompositeProduct deepCopy() {
 		this.logger.info("[function] deepCopy() of " + this.getName());
 		// TODO Auto-generated method stub
+//		basically a copy of this product, is anew product with the same fields but different reference
 		return new CompositeProduct(this.getName(), this.discount, this.containedProducts);
 	}
 	
@@ -73,6 +80,7 @@ public class CompositeProduct extends Product {
 	 */
 	public boolean removeProduct(Product product) {
 		this.logger.info("[function] removeProduct() " + product.getName() + " from " + this.getName());
+//		List.remove(Object) works with Object.equals(Object) (see java-docs for this)
 		return this.containedProducts.remove(product);
 	}
 	
@@ -88,6 +96,7 @@ public class CompositeProduct extends Product {
 	
 	public float getPrice() {
 		this.logger.trace("[get] getPrice() of " + this.getName());
+//		summing up the price with streams and mapToDouble and sum
 		double sum = this.containedProducts
 				.stream()
 				.mapToDouble(el -> el.getPrice())
@@ -102,6 +111,7 @@ public class CompositeProduct extends Product {
 	@Override
 	public String toString() {
 		this.logger.info("[function] toString() of " + this.getName());
+//		building up the list of contained products as one string
 		String tmp = this.containedProducts
 				.stream()
 				.map(el -> el.toString())

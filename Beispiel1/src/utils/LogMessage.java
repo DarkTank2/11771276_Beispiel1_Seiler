@@ -26,11 +26,13 @@ public class LogMessage {
 		this.Name = Name;
 		this.Message = message;
 		this.level = level;
+//		use the current time
 		this.date = LocalDateTime.now();
 	}
 
 	@Override
 	public String toString() {
+//		representation of the message, customized and comparable with JavaScript's Bunyan logger-messages
 		return this.date + " | " + this.level.toString()  + " | " + this.Name + " | " + this.Message;
 	}
 }

@@ -29,6 +29,7 @@ public class Order extends Record implements IDeepCopy {
 		super(id);
 		this.table = table;
 		this.products = new Vector<IProduct>();
+//		basic stream, adding each element from the passed list to this' list
 		products
 			.stream()
 			.forEach(el -> {
@@ -45,6 +46,9 @@ public class Order extends Record implements IDeepCopy {
 	public List<IProduct> getProducts() {
 		this.logger.trace("[get] products");
 		List<IProduct> l = new Vector<IProduct>();
+//		later on programming i discovered an even simpler method of returning a copy of the list without creating a new list
+//		based on mapping an collecting to list, but this also works like a charm
+//		the other method would be like: return this.product.stream().map(el -> el.deepCopy()).collect(Collectors.toList());
 		this.products
 			.stream()
 			.forEach(el -> {
@@ -60,7 +64,8 @@ public class Order extends Record implements IDeepCopy {
 	 * @return
 	 */
 	public boolean setState(OrderState newStatus) {
-		this.logger.info("[set] setState()");
+		this.logger.trace("[set] setState()");
+//		not important but due to logging purposes i do this one
 		if (this.currentState == newStatus) {
 			this.logger.debug("[debug] stati are equal");
 			return true;
@@ -119,7 +124,7 @@ public class Order extends Record implements IDeepCopy {
 		this.logger.info("[deep-copy] of order with id '" + this.getIdentifier() + "´' for table '" + this.getTable().getTableIdentifier() + "'");
 		Order o = new Order(this.getIdentifier(), this.getTable(), this.getProducts());
 		o.setState(this.getState());
-		return null;
+		return o;
 	}
 	
 	/**
@@ -132,6 +137,7 @@ public class Order extends Record implements IDeepCopy {
 		this.logger.trace("[equals] of order with id '" + this.getIdentifier() + "' for table '" + this.getTable().getTableIdentifier() + "'");
 		if (!(obj instanceof Order)) return false;
 		Order o = (Order) obj;
+//		validating each attribute
 		if (o.getIdentifier() != this.getIdentifier()) return false;
 		if (!o.getTable().equals(this.getTable())) return false;
 		if (o.getState() != this.getState()) return false;

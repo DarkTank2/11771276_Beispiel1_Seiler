@@ -60,6 +60,7 @@ public abstract class Product implements IProduct {
 	 */
 	public void setName(String name) {
 		this.logger.trace("[set] name from '" + this.name + "' to '" + name + "'");
+//		validation of name, if null set it to an empty sting else use it
 		this.name = name == null ? "" : name;
 	}
 
@@ -68,7 +69,7 @@ public abstract class Product implements IProduct {
 	 */
 	@Override
 	public float getPrice() {
-		this.logger.trace("[get] name of " + this.price);
+		this.logger.trace("[get] price of " + this.price);
 		// TODO Auto-generated method stub
 		return this.price;
 	}
@@ -105,10 +106,12 @@ public abstract class Product implements IProduct {
 	 * @param obj
 	 */
 	public final boolean equals(Object obj) {
+//		the object has to have the same class
 		if (!(obj instanceof Product)) {
 			return false;
 		}
 		Product p = (Product) obj;
-		return p.getName() == this.getName();
+//		and the same name, than it is considered to be equal to this
+		return p.getName().equals(this.getName());
 	}
 }

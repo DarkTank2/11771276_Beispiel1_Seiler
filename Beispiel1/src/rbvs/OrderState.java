@@ -6,6 +6,8 @@
  */
 package rbvs;
 
+// methods 'values' and 'valueOf' does not have to be implemented since ENUM implicitly declares those methods
+
 public enum OrderState {
 	CANCELLED,
 	OPEN,
