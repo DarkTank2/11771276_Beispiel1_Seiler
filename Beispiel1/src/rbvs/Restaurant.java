@@ -8,6 +8,7 @@ package rbvs;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Vector;
 import java.util.stream.Collectors;
 
@@ -361,6 +362,63 @@ public class Restaurant {
 		
 		r.orderProductForTable(r.getSpecificTable("Base 2"), r.findProduct("Only Drinks"));
 		r.orderProductForTable(r.getSpecificTable("Base 2"), r.findProduct("Only basics"));
+		
+//		implementing console-based UI here
+		int userinput = 1;
+		Scanner scanner = new Scanner(System.in);
+//		finishing the program on "Exit"
+		while(userinput != 0) {
+			System.out.println("Do you want to exit? Type '0'");
+			System.out.println("Do you want to search for a product? Type '1'");
+			System.out.println("Do you want to add a new product to the assortment? Type '2'");
+			userinput = scanner.nextInt();
+//			flush the input since the number is followed with crlf
+			scanner.nextLine();
+			switch (userinput) {
+			case 1:
+				log.trace("[userinput] User requested search for a product");
+				System.out.println("Please input the name of the product you want to find: ");
+				String name = scanner.nextLine();
+				log.trace("[find-product] User typed in: " + name);
+				IProduct p = r.findProduct(name);
+				if (p == null) {
+					System.out.println("Couldn't find a product with this name '" + name + "'");
+					log.warn("[find-product] couldn't find product with name '" + name + "'");
+				} else {
+					System.out.println("Search for product successful: ");
+					System.out.println(p.toString());
+					log.trace("[find-product] succesful");
+				}
+				break;
+			case 2:
+				log.trace("[userinput] User requested adding a new product");
+				System.out.println("Please enter a name for the product: ");
+				String prodName = scanner.nextLine();
+				log.trace("[add-product] user typed in: " + prodName);
+				IProduct prod = new SimpleProduct(prodName);
+				try {
+					r.addProduct(prod);
+					System.out.println("Please input a value of the product: ");
+					try {
+						((Product) r.findProduct(prodName)).setPrice((float) scanner.nextDouble());
+						System.out.println("Product added!");
+						log.trace("[add-product] succesful");
+					} catch (IllegalArgumentException e1) {
+						log.error("[error] IllegalArgumentException: " + e1.getMessage());
+						e1.printStackTrace();
+						System.out.println("Invalid price!");
+					}
+				} catch (DuplicateProductException e) {
+					// TODO Auto-generated catch block
+					log.error("[error] DuplicateProductException: " + e.getMessage());
+					e.printStackTrace();
+					System.out.println("Product with this name already exists!");
+				}
+				break;
+			}
+		}
+		scanner.close();
+		
 		
 //		trace the stringified restaurant
 		log.trace(r.toString());
